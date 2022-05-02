@@ -11,11 +11,11 @@ export class MessageService {
     private auth: AuthService
   ) { }
 
-  getChatrooms(uid) {
+  getChatrooms(uid: any) {
     return this.afs.collection('/users/' + uid + '/messaging', ref => ref.orderBy('lastUpdate', 'desc')).valueChanges();
   }
 
-  checkChatroom(profileuid) {
+  checkChatroom(profileuid: any) {
     this.auth.getAuthState().subscribe(curruser => {
       const currentuid = curruser.uid;
       this.afs.collection('users/' + curruser.uid + '/messaging', ref => ref.where('uid', '==', profileuid)).valueChanges()
@@ -29,7 +29,7 @@ export class MessageService {
     });
   }
 
-  clearUnread(rid) {
+  clearUnread(rid: any) {
     this.auth.getAuthState().subscribe(curruser => {
       if (curruser) {
         this.afs.doc('users/' + curruser.uid + '/messaging/' + rid).update({unread: false});
@@ -37,11 +37,11 @@ export class MessageService {
     });
   }
 
-  getChatroomFromRID(rid, uid) {
+  getChatroomFromRID(rid: any, uid: any) {
     return this.afs.doc('users/' + uid + '/messaging/' + rid).valueChanges();
   }
 
-  createChatroom(profileuid) {
+  createChatroom(profileuid: any) {
     this.auth.getAuthState().subscribe(
       curruser => {
         const rid = this.afs.createId();
@@ -63,15 +63,15 @@ export class MessageService {
       });
   }
 
-  getUnread(uid) {
+  getUnread(uid: any) {
     return this.afs.collection('users/' + uid + '/messaging', ref => ref.where('unread', '==', true)).valueChanges();
   }
 
-  getMessages(rid) {
+  getMessages(rid: any) {
     return this.afs.collection('messaging/' + rid + '/messages', ref => ref.orderBy('timestamp')).valueChanges();
   }
 
-  sendMessage(msgData) {
+  sendMessage(msgData: any) {
     this.auth.getAuthState().subscribe(curruser => {
       const mid = this.afs.createId();
       const msg = {
@@ -85,7 +85,7 @@ export class MessageService {
     });
   }
 
-  getChatroom(profileuid, currentuid) {
+  getChatroom(profileuid: any, currentuid: any) {
     return this.afs.collection('users/' + currentuid + '/messaging', ref => ref.where('uid', '==', profileuid)).valueChanges();
   }
 }

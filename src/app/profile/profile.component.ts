@@ -12,7 +12,6 @@ import { AddPostComponent } from '../add-post/add-post.component';
 import { LikesService } from '../services/likes.service';
 import { MessageService } from '../services/message.service';
 import { PlatformLocation } from '@angular/common';
-import { CheckType } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-profile',
@@ -22,28 +21,28 @@ import { CheckType } from '@angular/core/src/view';
 export class ProfileComponent implements OnInit {
 
   @ViewChild('modalContainer') modalContent: ElementRef;
-  modalRef;
-  closeResult;
-  room;
+  modalRef: any;
+  closeResult: any;
+  room: any;
 
-  displayName;
-  userName;
-  photoURL = '../../assets/images/default-profile.jpg';
-  status;
-  joinDate = 'May 2009';
+  displayName: any;
+  userName: any;
+  photoURL: string = '../../assets/images/default-profile.jpg';
+  status: any;
+  joinDate: string = 'May 2009';
   userid = null;
-  bannerURL;
-  userFollowers;
-  userFollowing;
+  bannerURL: any;
+  userFollowers: any;
+  userFollowing: any;
 
-  currentuid;
+  currentuid: any;
 
-  totalScribes;
-  totalFollowers;
-  totalFollowing;
+  totalScribes: any;
+  totalFollowers: any;
+  totalFollowing: any;
   totalLikes = 0;
 
-  posts;
+  posts: any;
   followers: any;
   following: any;
   likes: any;
@@ -58,7 +57,7 @@ export class ProfileComponent implements OnInit {
   showFollowing: boolean;
   showLikes: boolean;
 
-  filename;
+  filename: any;
 
   profileInfoClass = 'row justify-content-center ml-md-2 ml-lg-auto justify-content-lg-end';
 
@@ -127,7 +126,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  showTab(type) {
+  showTab(type: any) {
     if (type === 'posts') {
       this.showPosts = true;
       this.showFollowers = false;
@@ -210,7 +209,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getActiveTabStyle(tabName) {
+  getActiveTabStyle(tabName: any) {
     const style = 'col-2 p-1 px-3 my-0 align-self-center';
     if (this.showPosts && tabName === 'posts') {
       return style + ' current';
@@ -265,9 +264,9 @@ export class ProfileComponent implements OnInit {
       if (this.room) {
         history.pushState(null, null, 'chatroom/' + this.room.rid);
       }
-      this.modalRef.result.then((result) => {
+      this.modalRef.result.then((result: any) => {
         this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
+      }, (reason: any) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     }
@@ -283,7 +282,7 @@ export class ProfileComponent implements OnInit {
       }
     }
 
-    processImage(event) {
+    processImage(event: any) {
       const file = event.target.files[0];
       if (file.size > 2000000) {
         this.filename = 'Max Filesize 2Mb!';

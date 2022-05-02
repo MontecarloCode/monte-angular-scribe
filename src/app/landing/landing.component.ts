@@ -9,8 +9,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class LandingComponent implements OnInit {
 
-  mostLiked;
-  mostCommented;
+  mostLiked: any;
+  mostCommented: any;
 
   constructor(
     private auth: AuthService,

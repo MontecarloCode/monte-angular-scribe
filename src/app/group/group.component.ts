@@ -18,27 +18,27 @@ import { PlatformLocation } from '@angular/common';
 })
 export class GroupComponent implements OnInit {
 
-  gid;
-  gname;
-  desc;
-  totalMembers;
-  totalPosts;
-  createDate;
-  members;
-  admin;
-  bannerURL;
+  gid: any;
+  gname: any;
+  desc: any;
+  totalMembers: any;
+  totalPosts: any;
+  createDate: any;
+  members: any;
+  admin: any;
+  bannerURL: any;
 
-  isInvalid;
+  isInvalid: any;
   isSubbed = false;
-  isLoggedin;
+  isLoggedin: any;
   isLoaded = false;
   isAdmin = false;
 
-  posts;
-  modalRef;
-  closeResult;
+  posts: any;
+  modalRef: any;
+  closeResult: any;
 
-  filename;
+  filename: any;
 
   constructor(
     private afs: AngularFirestore,
@@ -151,11 +151,11 @@ export class GroupComponent implements OnInit {
     return this.datePipe.transform(this.createDate, 'month');
   }
 
-  open(content) {
+  open(content: any) {
     this.modalRef = this.modalService.open(content);
-    this.modalRef.result.then((result) => {
+    this.modalRef.result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
@@ -170,7 +170,7 @@ export class GroupComponent implements OnInit {
     }
   }
 
-  processImage(event) {
+  processImage(event: any) {
     const file = event.target.files[0];
     if (file.size > 2000000) {
       this.filename = 'Max Filesize 2Mb!';

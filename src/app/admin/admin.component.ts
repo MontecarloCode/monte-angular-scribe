@@ -11,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  adminDetails;
-  feedbacks;
-  reports;
+  adminDetails: any;
+  feedbacks: any;
+  reports: any;
 
   constructor(
     private afs: AngularFirestore,

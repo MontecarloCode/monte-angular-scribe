@@ -9,8 +9,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class SuggestedComponent implements OnInit {
 
-  users;
-  currentuser;
+  users: any;
+  currentuser: any;
 
   constructor(
     private userService: UserService,
@@ -30,7 +30,7 @@ export class SuggestedComponent implements OnInit {
     });
   }
 
-  checkCurrent(uid) {
+  checkCurrent(uid: any) {
     if (this.currentuser && this.currentuser === uid) {
       return false;
     } else {
