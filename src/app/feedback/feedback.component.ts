@@ -11,10 +11,10 @@ import * as firebase from 'firebase/app';
 })
 export class FeedbackComponent implements OnInit {
 
-  text;
-  subject;
-  showSuccess;
-  requiredErr;
+  text: any;
+  subject: any;
+  showSuccess: any;
+  requiredErr: any;
 
   constructor(
     private afs: AngularFirestore,

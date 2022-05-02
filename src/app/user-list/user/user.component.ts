@@ -10,14 +10,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class UserComponent implements OnInit {
 
-  @Input() uid: string;
-  @Input() type: string;
-  @Input() modalRef;
+  @Input() uid: string = "";
+  @Input() type: string = "";
+  @Input() modalRef: any;
 
-  username;
-  displayname;
-  photoURL;
-  status;
+  username: string = "";
+  displayname: string = "";
+  photoURL: string = "";
+  status: any;
 
   isCurrentUser = false;
 

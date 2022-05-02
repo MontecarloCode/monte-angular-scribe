@@ -1,12 +1,7 @@
 import { Injectable, Output } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import * as firebase from 'firebase';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/scan';
-import 'rxjs/add/operator/take';
 import { Router } from '@angular/router';
 import { LikesService } from './likes.service';
 
@@ -29,12 +24,12 @@ export class PostsService {
   ) { }
 
   // Get a user's posts
-  getProfilePosts(uid) {
+  getProfilePosts(uid: any) {
     return this.afs.collection('posts', ref => ref.where('uid', '==', uid).orderBy('date', 'desc')).valueChanges();
   }
 
   // Add post //
-  addPost(newPost) {
+  addPost(newPost: any) {
     this.auth.getAuthState().subscribe(
       currentuser => {
         const date = firebase.firestore.FieldValue.serverTimestamp();
@@ -56,7 +51,7 @@ export class PostsService {
   }
 
   // Add Comment //
-  addComment(newPost) {
+  addComment(newPost: any) {
     this.auth.getAuthState().subscribe(
       currentuser => {
         const date = firebase.firestore.FieldValue.serverTimestamp();
@@ -83,12 +78,12 @@ export class PostsService {
   }
 
   // Get a post's comments
-  getComments(pid) {
+  getComments(pid: any) {
     return this.afs.collection('posts/' + pid + '/comments', ref => ref.orderBy('timestamp', 'asc')).valueChanges();
   }
 
   // Get user's feed
-  getFeed(uid) {
+  getFeed(uid: any) {
     return this.afs.collection<any>('users/' + uid + '/feed',
       ref => ref.orderBy('date', 'desc')
       .limit(200))
@@ -96,17 +91,17 @@ export class PostsService {
   }
 
   // Get individual post
-  public getPost(pid) {
+  public getPost(pid: any) {
     return this.afs.doc<any>('posts/' + pid).valueChanges();
   }
 
   // Delete post
-  public deletePost (pid) {
+  public deletePost (pid: any) {
     this.afs.doc<any>('posts/' + pid).delete();
   }
 
   // Report post
-  public reportPost (pid) {
+  public reportPost (pid: any) {
     this.auth.getAuthState().subscribe(curruser => {
       if (curruser) {
         const repid = this.afs.createId();
@@ -129,14 +124,14 @@ export class PostsService {
     return this.afs.collection('posts', ref => ref.orderBy('totalComments', 'desc').limit(3)).valueChanges();
   }
 
-  updatePhotoURL(url, pid) {
+  updatePhotoURL(url: any, pid: any) {
     const data = {
       photoURL: url
     };
     this.afs.doc('posts/' + pid).update(data);
   }
 
-  updateBannerURL(url, uid) {
+  updateBannerURL(url: any, uid: any) {
     const data = {
       bannerURL: url
     };

@@ -15,18 +15,18 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class AccountComponent implements OnInit {
 
-  photoURL = '../../assets/images/default-profile.jpg';
-  userName = 'Enter Username';
-  displayName = 'Enter Displayname';
-  status = 'Enter status';
-  uid;
+  photoURL: any = '../../assets/images/default-profile.jpg';
+  userName: any = 'Enter Username';
+  displayName: any = 'Enter Displayname';
+  status: any = 'Enter status';
+  uid: any;
 
-  currentusername;
+  currentusername: any;
 
-  filename = 'Change Picture';
-  inputFile;
+  filename: any = 'Change Picture';
+  inputFile: any;
 
-  isTaken = false;
+  isTaken: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -88,12 +88,12 @@ export class AccountComponent implements OnInit {
       });
   }
 
-  search($event) {
+  search($event: any) {
     const q = $event.target.value;
     this.checkUsername(q);
   }
 
-  checkUsername(q) {
+  checkUsername(q: any) {
     this.afs.collection('users', ref => ref.where('userName', '==', q)).valueChanges().subscribe(user => {
       const searchuser: any = user[0];
       if (user[0] && this.currentusername !== searchuser.userName) {
@@ -111,7 +111,7 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  processImage(event) {
+  processImage(event: any) {
     this.inputFile = event.target.files[0];
     this.filename = this.inputFile.name;
     if (this.inputFile.size > 2000000) {

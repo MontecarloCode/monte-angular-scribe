@@ -2,7 +2,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { NotificationService } from '../services/notification.service';
 import { MessageService } from '../services/message.service';
@@ -24,29 +24,29 @@ export class NavbarComponent implements OnInit {
     private msgService: MessageService
   ) { }
 
-  @ViewChild('popover') popoverRef;
+  @ViewChild('popover') popoverRef: any;
 
-  isUser: boolean;
-  displayName;
-  uid;
-  userName;
-  photoURL = '../../assets/images/default-profile.jpg';
-  totalFollowers;
-  totalFollowing;
-  totalScribes;
+  isUser: boolean = true;
+  displayName: string = "";
+  uid: any;
+  userName: string = "";
+  photoURL: string = '../../assets/images/default-profile.jpg';
+  totalFollowers: any;
+  totalFollowing: any;
+  totalScribes: any;
 
-  unread;
-  unreadmsgs;
-  notifs;
+  unread: any;
+  unreadmsgs: any;
+  notifs: any;
 
-  closeResult;
-  modalRef;
+  closeResult: any;
+  modalRef: any;
 
   ngOnInit() {
     this.isUser = false;
     this.getUserData();
   }
-  sendTo(path) {
+  sendTo(path: any) {
     if (path === 'profile') {
       this.router.navigateByUrl('user/' + this.userName);
     }
@@ -100,7 +100,7 @@ export class NavbarComponent implements OnInit {
     this.auth.logout();
   }
 
-  open(content) {
+  open(content: any) {
     this.modalRef = this.modalService.open(content);
   }
 

@@ -11,25 +11,25 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class AddCommentComponent implements OnInit {
 
-  @Input() parentpid;
+  @Input() parentpid : any;
 
-  buttonsClass = 'col-12 mt-2 d-none';
-  textareaClass = 'form-control col-10';
-  imgcontainerClass = 'col-2';
-  addPostWrapper;
-  containerStyle;
-  route;
+  buttonsClass: string = 'col-12 mt-2 d-none';
+  textareaClass: string = 'form-control col-10';
+  imgcontainerClass: string = 'col-2';
+  addPostWrapper: any;
+  containerStyle: any;
+  route: any;
 
   // Image Data
-  inputFile;
-  filename;
+  inputFile: any;
+  filename: any;
 
   // Post Data
-  postBody;
-  imgURL;
-  pid;
+  postBody: any;
+  imgURL: any;
+  pid: any;
 
-  @Input() showAvatar;
+  @Input() showAvatar: any;
 
   constructor(
     private postService: PostsService,
@@ -70,7 +70,7 @@ export class AddCommentComponent implements OnInit {
     }
   }
 
-  processImage(event) {
+  processImage(event: any) {
     this.inputFile = event.target.files[0];
     this.filename = this.inputFile.name;
     if (this.inputFile.size > 2000000) {

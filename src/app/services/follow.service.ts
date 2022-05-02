@@ -12,11 +12,11 @@ export class FollowService {
     private userservice: UserService,
   ) { }
 
-  isFollowing(profileuid, currentuid) {
+  isFollowing(profileuid: any, currentuid: any) {
     return this.afs.collection<any>('/users/' + profileuid + '/followers', ref => ref.where('uid', '==', currentuid)).valueChanges();
   }
 
-  follow(profileuid) {
+  follow(profileuid: any) {
     this.auth.getAuthState().subscribe(
       user => {
         if (user) {
@@ -33,7 +33,7 @@ export class FollowService {
       });
   }
 
-  unfollow(profileuid) {
+  unfollow(profileuid: any) {
     this.auth.getAuthState().subscribe(
       user => {
         if (user) {
@@ -44,11 +44,11 @@ export class FollowService {
     });
   }
 
-  getFollowing(uid) {
+  getFollowing(uid: any) {
     return this.afs.collection<any>('/users/' + uid + '/following').valueChanges();
   }
 
-  getFollowers(uid) {
+  getFollowers(uid: any) {
     return this.afs.collection<any>('/users/' + uid + '/followers').valueChanges();
   }
 

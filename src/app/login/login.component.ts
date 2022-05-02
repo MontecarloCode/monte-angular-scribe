@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.titleService.setTitle('Login');
   }
 
-  login(mode) {
+  login(mode: any) {
     if (mode === 'google') {
       this.auth.googleLogin().then(() => {
         this.router.navigateByUrl('/home');

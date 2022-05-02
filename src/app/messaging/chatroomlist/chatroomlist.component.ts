@@ -14,16 +14,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ChatroomlistComponent implements OnInit {
 
-  @Input() room;
+  @Input() room: any;
   @ViewChild('modalContainer') modalContent: ElementRef;
 
-  roomName;
-  photoURL;
-  roomData;
-  unread;
+  roomName: any;
+  photoURL: any;
+  roomData: any;
+  unread: any;
 
-  modalRef;
-  closeResult;
+  modalRef: any;
+  closeResult: any;
 
   constructor(
     private userService: UserService,
@@ -73,7 +73,7 @@ export class ChatroomlistComponent implements OnInit {
     history.pushState(null, null, 'chatroom/' + this.room.rid);
     this.modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     this.msgService.clearUnread(this.roomData.rid);

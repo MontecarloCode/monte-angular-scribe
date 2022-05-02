@@ -10,15 +10,15 @@ export class NotificationService {
     private auth: AuthService
   ) { }
 
-  getNotifs(uid) {
+  getNotifs(uid: any) {
     return this.afs.collection('users/' + uid + '/notifications', ref => ref.orderBy('timestamp', 'desc')).valueChanges();
   }
 
-  getUserUnread(uid) {
+  getUserUnread(uid: any) {
     return this.afs.collection('users/' + uid + '/unread', ref => ref.orderBy('timestamp', 'desc')).valueChanges();
   }
 
-  clearUnread(uid) {
+  clearUnread(uid: any) {
     this.afs.collection('users/' + uid + '/unread').valueChanges().subscribe(unread => {
       unread.forEach(notif => {
         const notification: any = notif;

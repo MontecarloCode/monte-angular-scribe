@@ -19,46 +19,46 @@ import { ViewEncapsulation } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
-  @Input() inputPost;
-  @Input() inputPostID;
-  @Input() parentPid;
+  @Input() inputPost: any;
+  @Input() inputPostID: any;
+  @Input() parentPid: any;
 
-  @Input() ParentModalRef;
+  @Input() ParentModalRef: any;
 
-  modalRef;
+  modalRef: any;
 
-  currentuser;
-  currentuid;
-  showContext = true;
+  currentuser: any;
+  currentuid: any;
+  showContext: boolean = true;
 
   isLoggedIn = false;
   isSingle = false;
   isCurrentUser = false;
-  isInvalid;
+  isInvalid: any;
   isLoaded = false;
   showLoader = false;
-  closeResult: string;
-  isLiked;
+  closeResult: string = "";
+  isLiked: any;
   likeStyle = 'fa fa-thumbs-o-up';
   likeLen = 0;
   commentLen = 0;
 
-  pid;
-  displayName;
-  userName;
-  photoURL = '../../assets/images/default-profile.jpg';
-  body;
-  date;
-  likes;
-  type;
-  comments;
-  postPhotoURL;
+  pid: any;
+  displayName: any;
+  userName: any;
+  photoURL: string = '../../assets/images/default-profile.jpg';
+  body: any;
+  date: any;
+  likes: any;
+  type: any;
+  comments: any;
+  postPhotoURL: any;
 
-  parentUsername;
-  parentUID;
+  parentUsername: any;
+  parentUID: any;
 
-  gname;
-  gid;
+  gname: any;
+  gid: any;
 
 
 
@@ -179,7 +179,7 @@ export class PostComponent implements OnInit {
     }
   }
 
-  getComments(pid) {
+  getComments(pid: any) {
     this.postService.getComments(pid).subscribe(comments => {
       if (comments) {
         this.commentLen = comments.length;
@@ -188,7 +188,7 @@ export class PostComponent implements OnInit {
     });
   }
 
-  getLikes(pid) {
+  getLikes(pid: any) {
     this.likeService.getLikes(pid).subscribe(likes => {
       this.likes = likes;
       this.likeLen = likes.length;
@@ -196,7 +196,7 @@ export class PostComponent implements OnInit {
         user => {
           if (user) {
             this.currentuser = user;
-            this.likes.forEach(like => {
+            this.likes.forEach((like: any) => {
               if (like.uid === user.uid) {
                 this.isLiked = true;
                 this.likeStyle = 'fa fa-thumbs-up post-liked';
@@ -245,7 +245,7 @@ export class PostComponent implements OnInit {
     this.postService.reportPost(this.pid);
   }
 
-  retrieveDate(date, type?) {
+  retrieveDate(date: any, type?: any) {
     if (date) {
       if (type === 'long') {
         return this.dateFormat.transform(date, type);
@@ -272,7 +272,7 @@ export class PostComponent implements OnInit {
     }
   }
 
-  sendTo(type, id?) {
+  sendTo(type: any, id?: any) {
     if (this.modalRef) {
       this.modalRef.close();
     }
@@ -300,7 +300,7 @@ export class PostComponent implements OnInit {
   }
 
   // Modal
-  open(content) {
+  open(content: any) {
     if (this.ParentModalRef) {
       this.ParentModalRef.close();
     }
@@ -310,9 +310,9 @@ export class PostComponent implements OnInit {
     });
     // push new state to history
     history.pushState(null, null, 'post/' + this.pid);
-    this.modalRef.result.then((result) => {
+    this.modalRef.result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }

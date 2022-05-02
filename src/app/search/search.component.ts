@@ -1,8 +1,8 @@
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -35,22 +35,22 @@ export class SearchComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
     };
-    Observable.combineLatest(this.startObs, this.endAtObs).subscribe(
-      value => {
-        this.doQuery(value[0], value[1]).subscribe(
-          users => {
-            if (users) {
-              this.users = users;
-              this.searchDrop.open();
-            }
-          });
-          this.doGroupQuery(value[0], value[1]).subscribe(
-            groups => {
-              if (groups) {
-                this.groups = groups;
-              }
-            });
-      });
+    // Observable.combineLatest(this.startObs, this.endAtObs).subscribe(
+    //   value => {
+    //     this.doQuery(value[0], value[1]).subscribe(
+    //       users => {
+    //         if (users) {
+    //           this.users = users;
+    //           this.searchDrop.open();
+    //         }
+    //       });
+    //       this.doGroupQuery(value[0], value[1]).subscribe(
+    //         groups => {
+    //           if (groups) {
+    //             this.groups = groups;
+    //           }
+    //         });
+    //   });
   }
 
   doQuery(start, end) {

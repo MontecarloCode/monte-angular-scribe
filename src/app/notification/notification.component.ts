@@ -8,9 +8,9 @@ import { UserService } from '../services/user.service';
 })
 export class NotificationComponent implements OnInit {
 
-  @Input() modalRef;
-  @Input() notif;
-  user;
+  @Input() modalRef: any;
+  @Input() notif: any;
+  user: any;
 
   constructor(
     private userService: UserService

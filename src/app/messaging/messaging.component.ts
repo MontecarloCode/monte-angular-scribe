@@ -12,7 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class MessagingComponent implements OnInit {
 
-  chatrooms;
+  chatrooms: any;
 
   constructor(
     private msgService: MessageService,
@@ -35,7 +35,7 @@ export class MessagingComponent implements OnInit {
     });
   }
 
-  getRoomDetails(uid) {
+  getRoomDetails(uid: any) {
     this.userService.retrieveUserDocumentFromID(uid).subscribe(userDetails => {
       return userDetails.userName;
     });

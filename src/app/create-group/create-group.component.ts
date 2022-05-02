@@ -1,8 +1,7 @@
 import { AngularFirestore } from 'angularfire2/firestore';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GroupService } from './../services/group.service';
-import { Component, OnInit, Input, group } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-create-group',
@@ -11,19 +10,19 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CreateGroupComponent implements OnInit {
 
-  @Input() groupDetails;
-  @Input() modalRef;
+  @Input() groupDetails: any;
+  @Input() modalRef: any;
 
-  gnameExists = false;
-  ogname;
+  gnameExists: boolean = false;
+  ogname: any;
 
-  description;
-  gname;
-  group;
+  description: any;
+  gname: any;
+  group: any;
 
-  filename;
-  inputFile;
-  photoURL = '../../assets/images/default-profile.jpg';
+  filename: any;
+  inputFile: any;
+  photoURL: string = '../../assets/images/default-profile.jpg';
 
   groupForm = new FormGroup({
     gname: new FormControl('', [
@@ -60,7 +59,7 @@ export class CreateGroupComponent implements OnInit {
     }
   }
 
-  checkName($event) {
+  checkName($event: any) {
     const name = $event.target.value;
     this.afs.collection('groups', ref => ref.where('gname', '==', name)).valueChanges().subscribe(groupDoc => {
       const searchGroup: any = groupDoc[0];
@@ -105,7 +104,7 @@ export class CreateGroupComponent implements OnInit {
     }
   }
 
-  processImage(event) {
+  processImage(event: any) {
     this.inputFile = event.target.files[0];
     this.filename = this.inputFile.name;
     if (this.filename.length > 25) {
