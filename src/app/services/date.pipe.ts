@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 
 @Pipe({name: 'dateFormatPipe'})
 export class DateFormatPipe implements PipeTransform {
-  transform(value: string, type?: string) {
+  transform(value: any, type?: any) {
     const datePipe = new DatePipe('en-US');
     if (!type) {
       value = datePipe.transform(value, 'MMM d');

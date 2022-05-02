@@ -11,12 +11,12 @@ import { UserService } from '../../services/user.service';
 })
 export class ChatroomComponent implements OnInit {
 
-  @Input() room;
-  @Input() modalRef;
+  @Input() room: any;
+  @Input() modalRef: any;
 
-  msgText;
+  msgText: any;
 
-  msgs;
+  msgs: any;
 
   constructor(
     private msgService: MessageService,

@@ -8,8 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserListComponent implements OnInit {
 
   @Input() users: any;
-  @Input() title: string;
-  @Input() modalRef;
+  @Input() title: string = "";
+  @Input() modalRef: any;
 
   constructor() { }
 

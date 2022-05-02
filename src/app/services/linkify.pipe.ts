@@ -6,10 +6,12 @@ export class LinkifyPipe implements PipeTransform {
   transform(link: string): string {
     if (link) {
       return this.linkify(link);
+    }else {
+      return "";
     }
   }
 
-  private linkify(plainText): string {
+  private linkify(plainText: any): string {
     let replacedText;
     let replacePattern1;
     let replacePattern2;

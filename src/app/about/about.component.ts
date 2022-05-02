@@ -11,10 +11,10 @@ import { UserService } from '../services/user.service';
 })
 export class AboutComponent implements OnInit {
 
-  mostCommented;
-  mostLiked;
-  mostFollowed;
-  mostSubbed;
+  mostCommented: any;
+  mostLiked: any;
+  mostFollowed: any;
+  mostSubbed: any;
 
   constructor(
     private title: Title,

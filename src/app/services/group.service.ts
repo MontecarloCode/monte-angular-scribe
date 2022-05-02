@@ -8,7 +8,7 @@ interface Group {
   gname: string;
   gid: string;
   desc: string;
-  createDate;
+  createDate: string;
   admin?: string;
   bannerURL?: string;
 }
@@ -16,7 +16,7 @@ interface Group {
 @Injectable()
 export class GroupService {
 
-  currentuser;
+  currentuser: any;
 
   constructor(
     private afs: AngularFirestore,
@@ -24,7 +24,7 @@ export class GroupService {
     private auth: AuthService
   ) { }
 
-  createGroup(data) {
+  createGroup(data: any) {
     const gid = this.afs.createId();
     const GData = {
       gname: data.gname,
@@ -51,7 +51,7 @@ export class GroupService {
     });
   }
 
-  editGroup(data) {
+  editGroup(data: any) {
     const GData = {
       gname: data.gname,
       desc: data.desc,
@@ -59,7 +59,7 @@ export class GroupService {
     return this.afs.doc('groups/' + data.gid).update(GData);
   }
 
-  subscribe(gid) {
+  subscribe(gid: any) {
     this.auth.getAuthState().subscribe(currentuser => {
       if (currentuser) {
         const uid = currentuser.uid;
@@ -71,7 +71,7 @@ export class GroupService {
       }
     });
   }
-  unsubscribe(gid) {
+  unsubscribe(gid: any) {
     this.auth.getAuthState().subscribe(currentuser => {
       if (currentuser) {
         const uid = currentuser.uid;
@@ -80,15 +80,15 @@ export class GroupService {
     });
   }
 
-  getGroup(gid) {
+  getGroup(gid: any) {
     return this.afs.doc<Group>('groups/' + gid).valueChanges();
   }
 
-  getFeed(gid) {
+  getFeed(gid: any) {
     return this.afs.collection('groups/' + gid + '/feed', ref => ref.orderBy('date', 'desc')).valueChanges();
   }
 
-  getMembers(gid) {
+  getMembers(gid: any) {
     return this.afs.collection('groups/' + gid + '/members', ref => ref.orderBy('date')).valueChanges();
   }
 
@@ -96,7 +96,7 @@ export class GroupService {
     return this.afs.collection('groups', ref => ref.orderBy('totalMembers', 'desc')).valueChanges();
   }
 
-  updateBannerURL(url, gid) {
+  updateBannerURL(url: any, gid: any) {
     const data = {
       bannerURL: url
     };

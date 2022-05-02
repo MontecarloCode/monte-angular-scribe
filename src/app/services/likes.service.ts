@@ -8,15 +8,15 @@ export class LikesService {
     private afs: AngularFirestore
   ) { }
 
-  getLikes(pid) {
+  getLikes(pid: any) {
     return this.afs.collection('posts/' + pid + '/likes').valueChanges();
   }
 
-  getUserLikes(uid) {
+  getUserLikes(uid: any) {
     return this.afs.collection('users/' + uid + '/likes', ref => ref.orderBy('date', 'desc')).valueChanges();
   }
 
-  addLike(pid, uid) {
+  addLike(pid: any, uid: any) {
     const data = {
       uid: uid
     };
@@ -24,7 +24,7 @@ export class LikesService {
     .then(() => console.log('post ', pid, ' liked by user ', uid));
   }
 
-  removeLike(pid, uid) {
+  removeLike(pid: any, uid: any) {
     this.afs.doc('posts/' + pid + '/likes/' + uid).delete()
     .then(() => console.log('post ', pid, ' unliked by user ', uid));
   }

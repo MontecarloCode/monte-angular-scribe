@@ -18,19 +18,19 @@ import { CreateGroupComponent } from '../create-group/create-group.component';
 })
 export class HomeComponent implements OnInit {
 
-  displayName;
-  userName;
+  displayName: any;
+  userName: any;
   photoURL = '../../assets/images/default-profile.jpg';
-  bannerURL;
-  userid;
-  totalFollowers;
-  totalFollowing;
-  totalScribes;
+  bannerURL: any;
+  userid: any;
+  totalFollowers: any;
+  totalFollowing: any;
+  totalScribes: any;
 
-  modalRef;
-  closeResult;
+  modalRef: any;
+  closeResult: any;
 
-  feedPosts;
+  feedPosts: any;
 
   groups = [];
 
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
     this.titleService.setTitle('Home');
     this.getCurrentUser();
   }
-  sendTo(path, location?) {
+  sendTo(path: any, location?: any) {
     if (path === 'profile') {
       this.router.navigateByUrl('user/' + this.userName);
     }
@@ -122,14 +122,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  createGroup(content) {
+  createGroup(content: any) {
     this.modalRef = this.modalService.open(content, {
       size: 'lg',
       windowClass: 'modal-style'
     });
   }
 
-  open(content, type?) {
+  open(content: any, type?: any) {
     this.modalRef = this.modalService.open(content, {
       size: 'sm',
       windowClass: 'modal-style'
@@ -140,12 +140,12 @@ export class HomeComponent implements OnInit {
     }
     this.modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason, type)}`;
     });
   }
 
-  private getDismissReason(reason: any, type?): string {
+  private getDismissReason(reason: any, type?: any): string {
     if (type === 'grouplist') {
       history.back();
     }

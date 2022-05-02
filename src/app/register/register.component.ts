@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsernameValidators } from '../validators/username.validators';
 import { Title } from '@angular/platform-browser';
-import { AbstractControl } from '@angular/forms/src/model';
-import { ValidationErrors } from '@angular/forms/src/directives/validators';
 
 @Component({
   selector: 'app-register',
@@ -81,12 +79,12 @@ export class RegisterComponent implements OnInit {
     this.title.setTitle('Signup');
   }
 
-  search($event) {
+  search($event: any) {
     const q = $event.target.value;
     this.checkUsername(q);
   }
 
-  checkUsername(q) {
+  checkUsername(q: any) {
     this.afs.collection('users', ref => ref.where('userName', '==', q)).valueChanges().subscribe(user => {
       if (user[0]) {
         this.isTaken = true;
@@ -97,7 +95,7 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  register(type) {
+  register(type: any) {
     if (type === 'google' && this.googleusername.value && !this.isTaken) {
       const data = {
         type: 'google',

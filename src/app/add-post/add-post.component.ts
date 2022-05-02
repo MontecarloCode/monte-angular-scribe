@@ -13,26 +13,26 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddPostComponent implements OnInit {
 
-  @Input() userURL: string;
-  @Input() showAvatar;
-  @Input() type;
-  @Input() id;
+  @Input() userURL: any;
+  @Input() showAvatar: any;
+  @Input() type: any;
+  @Input() id: any;
 
-  buttonsClass = 'col-12 mt-2 d-none';
-  textareaClass = 'form-control col-10';
-  imgcontainerClass = 'col-2';
-  addPostWrapper;
-  containerStyle;
-  route;
+  buttonsClass: string = 'col-12 mt-2 d-none';
+  textareaClass: string = 'form-control col-10';
+  imgcontainerClass: string = 'col-2';
+  addPostWrapper: any;
+  containerStyle: any;
+  route: any;
 
   // Post Data
-  postBody;
-  imgURL;
-  pid;
+  postBody: any;
+  imgURL: any;
+  pid: any;
 
   // Image Data
-  inputFile;
-  filename;
+  inputFile: any;
+  filename: any;
 
   constructor(
     private postService: PostsService,
@@ -111,7 +111,7 @@ export class AddPostComponent implements OnInit {
     }
   }
 
-  processImage(event) {
+  processImage(event: any) {
     this.inputFile = event.target.files[0];
     this.filename = this.inputFile.name;
     if (this.inputFile.size > 2000000) {
